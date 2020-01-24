@@ -142,8 +142,13 @@ print("Second last character is: \(secondLast)")
 // This will separate the output from the examples above from your work
 print("===== Exercise 1 begins =====")
 
-
-
+let name = "Ilana Mohamed"
+// Iterate over each character in the string
+//For in used to loop
+for singleCharacter in name {
+    // The output will show below in the Debug area
+    print(singleCharacter)
+}
 /*:
 ### Exercise 2
 
@@ -159,7 +164,19 @@ print("===== Exercise 2 begins =====")
 let aQuestion = "请问现在几点了?"
 
 // Write code to complete the exercise below...
+var indexExample = aQuestion.index(aQuestion.startIndex, offsetBy: 3)
+let fourthCharacter = aQuestion[indexExample]
+print("The fourth character in the string is \(fourthCharacter)")
 
+// Print each letter's Unicode scalar value (a.k.a. "code unit")
+let question = "请问现在几点了?"
+for scalar in question.unicodeScalars {
+    print("The unicode scalar is: \(scalar)")
+    print("The unicode scalar's value is: \(scalar.value)")
+    if let myScalar = UnicodeScalar(22312){
+    print(String(myScalar))
+    }
+}
 /*:
 ### Exercise 3
 
@@ -176,6 +193,24 @@ Say that you wish to encrypt the word `pen` using a *rightward shift of three ch
 */
 
 // Create the starting phrase
-let plainText = "pen"
+let plainText = "CAB"
 
+//create a varible to store the ciphertext
+var cipherText = ""
+for scalar in plainText.unicodeScalars {
+    
+   print(scalar)
+    print(scalar.value)
+    let newScalarValue = scalar.value + 3
+
+
+//attempt to convert scalar value to actual scalar(character)
+    if let newScalar = UnicodeScalar(newScalarValue) {
+        print(newScalar)
+        print(newScalarValue)
+        cipherText += String(newScalar)
+        print(cipherText)
+    }
+    
 // Encrypt the starting phrase
+}
